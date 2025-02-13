@@ -96,8 +96,8 @@ export default async function oAuthCallback(params: {
       })
       tokens = new TokenSet(response.tokens)
     } else if (provider.idToken) {
-      provider.callbackUrl = provider?.authorization?.params.redirect_uri ?? provider.callbackUrl
-      provider.signinUrl = provider?.authorization?.params.redirect_uri ?? provider.signinUrl
+      provider.callbackUrl = provider?.authorization?.params?.redirect_uri ?? provider.callbackUrl
+      provider.signinUrl = provider?.authorization?.params?.redirect_uri ?? provider.signinUrl
       tokens = await client.callback(provider.callbackUrl, params, checks)
     } else {
       tokens = await client.oauthCallback(provider.callbackUrl, params, checks)
